@@ -1,0 +1,53 @@
+﻿@model Product
+
+<h1>Edit Product</h1>
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <input asp-for="ProductId" class="form-control" value="@Model.ProductId" hidden />
+    </div>
+
+    <div cdata-mdb-input-init class="form-outline mb-4">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" value="@Model.Title">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div data-mdb-input-init class="form-outline mb-4">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" value="@Model.Price">
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div data-mdb-input-init class="form-outline mb-4">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control" rows="3" value ="@Model.Description"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div data-mdb-input-init class="form-outline mb-4">
+        <label asp-for="Quantity"></label>
+        <input asp-for="Quantity" class="form-control" value="@Model.Quantity">
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+    </div>
+    <div data-mdb-input-init class="form-outline mb-4">
+        <label asp-for="ImagePath"></label>
+        <input asp-for="ImagePath" class="form-control" value="@Model.ImagePath">
+    </div>
+    <div data-mdb-input-init class="form-outline mb-4">
+        <label for="CategoryId">Category </label>
+        <select id="CategoryId" name="CategoryId" class="form-control">
+            <option value="@Model.CategoryId">@Model.Category!.Name</option>
+            @foreach (var item in ViewBag.Category)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+    </div>
+    <br />
+    <button type="submit" value="Edit Product" class="btn btn-primary" my-5>Submit</button>
+    <a href="~/Product/Index" class="btn btn-secondary">Cancel</a>
+
+</form>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}

@@ -1,0 +1,65 @@
+﻿@model Product
+
+<h3>Create Product</h3>
+<form asp-action="AddProduct">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <!--  column grid layout with text inputs for title -->
+    <div class="row mb-4">
+        <div class="col">
+            <div data-mdb-input-init class="form-outline">
+                <input asp-for="Title" class="form-control" placeholder="Enter The Product Title"/>
+                <span asp-validation-for="Title" class="text-danger"></span>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- price input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+        <input asp-for="Price" class="form-control" placeholder="Enter The Price" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+
+    </div>
+
+    <!-- Des input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+        <textarea asp-for="Description" rows="4" placeholder="Enter The Descripion"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+    </div>
+
+    <!-- Quantity input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+        <input asp-for="Quantity" class="form-control" placeholder="Enter The Quantity" />
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+
+    </div>
+
+    <!-- image input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+        <input asp-for="ImagePath" class="form-control" placeholder="Enter The Image Name With Extention">
+        <span asp-validation-for="ImagePath" class="text-danger"></span>
+
+    </div>
+    <!--Category input Choosing-->
+    <div class="form-group">
+        <select id="CategoryId" name="CategoryId" class="form-control">
+            <option value="">-- Select Category --</option>
+            @foreach (var item in ViewBag.Category)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+    </div>
+    <br />
+
+    <!-- Submit button -->
+    <button data-mdb-ripple-init type="submit" value="Add Product" class="btn btn-primary btn-block ">Add Product</button>
+    <a href="~/Product/Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+} 

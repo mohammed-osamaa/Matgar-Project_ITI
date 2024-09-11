@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "PoductLayout";
+}
+@model IEnumerable<Product>
+<style>
+    .cards-container {
+        display: flex;
+        flex-wrap : wrap;
+        gap: 20px; /* مسافة بين البطاقات */
+    }
+
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        width: 45%; /* حجم البطاقات */
+        width: calc(33.33% - 20px);
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<a asp-controller="Product" asp-action="AddProduct" class="btn btn-primary">Add Product</a>
+<hr />
+
+<div class="cards-container">
+    @foreach (var item in Model)
+    {
+    
+        <div class="card" style="width: 20rem;">
+            <div class="card-body">
+                <img src="~/images/@item.ImagePath" alt="Alternate Text" style="width: 18rem;" />
+                <h5 class="card-title">@item.Title</h5>
+                <h6>The Price @item.Price</h6>
+                <a href="~/Product/ViewDetails/@item.ProductId" class="btn btn-outline-success">ViewDetails</a>
+                <a href="~/Product/Edit/@item.ProductId" class="btn btn-outline-warning">Edit </a>
+                <a href="~/Product/Delete/@item.ProductId" class="btn btn-outline-danger">Delete</a>
+            </div>
+        </div>
+    }
+</div>

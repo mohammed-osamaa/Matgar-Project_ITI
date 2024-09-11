@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Category>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Category Id</th>
+            <th scope="col">Category Name </th>
+            <th scope="col">Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope = "row" > @item.CategoryId </th>
+                <td> @item.Name </td>
+                <td>
+                    <a href="~/Category/ViewDetails/@item.CategoryId" class="btn btn-outline-success">ViewDetails</a>
+                    <a href="~/Category/Edit/@item.CategoryId" class="btn btn-outline-warning">Edit </a>
+                    <a href="~/Category/Delete/@item.CategoryId" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+        
+    </tbody>
+    <tfoot>
+        <a asp-controller="Category" asp-action="AddCategory" class="btn btn-primary">Add Category</a>
+    </tfoot>
+</table>

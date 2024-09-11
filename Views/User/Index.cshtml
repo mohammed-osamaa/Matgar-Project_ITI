@@ -1,0 +1,64 @@
+﻿@model IEnumerable<User>
+
+<section class="intro">
+    <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+        <table class="table table-striped mb-0">
+            <thead style="background-color: #002d72;">
+                   <tr>
+                     <th scope="col">User Id</th>
+                     <th scope="col">First Name</th>
+                     <th scope="col">Last Name</th>
+                     <th scope="col">Email</th>
+                     <th scope="col">Password</th>
+                   </tr>
+             </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                     <tr>
+                         <th scope="row">@item.UserId</th>
+                         <td>@item.FirstName</td>
+                         <td>@item.LastName</td>
+                         <td>@item.Email</td>
+                         <td>@item.Password</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+<style>
+    html,
+    body,
+    .intro {
+        height: 100%;
+    }
+
+    table td,
+    table th {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    thead th {
+        color: #fff;
+    }
+
+    .card {
+        border-radius: .5rem;
+    }
+
+    .table-scroll {
+        border-radius: .5rem;
+    }
+
+        .table-scroll table thead th {
+            font-size: 1.25rem;
+        }
+
+    thead {
+        top: 0;
+        position: sticky;
+    }
+</style>

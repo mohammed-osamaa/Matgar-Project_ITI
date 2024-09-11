@@ -1,0 +1,12 @@
+﻿@model Product
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+                <img src="~/images/@Model.ImagePath" alt="Alternate Text" style="width: 20rem;" />
+                <h5 class="card-title">@Model.Title and Id : @Model.ProductId</h5>
+                <h6>The Price @Model.Price</h6>
+                <h6>The Category: @Model.Category!.Name</h6>
+                <p class="card-text">Description : @Model.Description</p>
+                <p class="card-text">Quantity : @Model.Quantity</p>
+                <a href="~/Product/Index" class="btn btn-primary">Back all Products</a>
+            </div>
+        </div>
